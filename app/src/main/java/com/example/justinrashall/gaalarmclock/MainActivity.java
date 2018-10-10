@@ -1,6 +1,7 @@
 package com.example.justinrashall.gaalarmclock;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TimePicker alarm_timepicker;
     TextView update_text;
     Context context;
+    PendingIntent pending_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,8 @@ public class MainActivity extends AppCompatActivity {
         // create an instance of a calendar
         final Calendar calendar = Calendar.getInstance();
 
-
-
         // create an intent to the Alarm Receiver Class
-        Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
-
+        final Intent my_intent = new Intent(this.context, Alarm_Receiver.class);
 
         // initialize start button
         Button alarm_on = (Button) findViewById(R.id.alarm_on);
@@ -78,6 +77,15 @@ public class MainActivity extends AppCompatActivity {
 
                 // method that changes the update text Textbox
                 set_alarm_text("Alarm set to: " + hour_string + ":" + minute_string);
+
+                // create a pending intent that delays the intent
+                // until the specified calendar time
+                pending_intent = PendingIntent.getBroadcast(MainActivity.this, 0,
+                        my_intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                // set the alarm manager
+                alarm_manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                        pending_intent);
 
 
             }
