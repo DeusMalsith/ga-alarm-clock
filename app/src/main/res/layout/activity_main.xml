@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="clock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/alarm_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alarm on"
+        app:layout_constraintStart_toStartOf="@+id/timePicker"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+    <Button
+        android:id="@+id/alarm_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alarm off"
+        app:layout_constraintEnd_toEndOf="@+id/timePicker"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+    <TextView
+        android:id="@+id/update_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Did you set the alarm?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+</android.support.constraint.ConstraintLayout>
