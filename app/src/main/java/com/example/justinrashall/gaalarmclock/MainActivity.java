@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 // method that changes the update text Textbox
                 set_alarm_text("Alarm off!");
 
+                // cancel the alarm
+                alarm_manager.cancel(pending_intent);
+
             }
         });
 
