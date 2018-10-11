@@ -26,6 +26,8 @@ public class RingtonePlayingService extends Service {
         media_song = MediaPlayer.create(this, R.raw.forest);
         media_song.start();
 
+        
+
         return START_NOT_STICKY;
     }
 

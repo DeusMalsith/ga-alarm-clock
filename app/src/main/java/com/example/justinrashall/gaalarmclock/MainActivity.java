@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 // cancel the alarm
                 alarm_manager.cancel(pending_intent);
 
+                // stop the ringtone
+                sendBroadcast(my_intent);
+
             }
         });
 
