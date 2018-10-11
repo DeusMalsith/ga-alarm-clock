@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 // method that changes the update text Textbox
                 set_alarm_text("Alarm set to: " + hour_string + ":" + minute_string);
 
+                // put in extra string into my_intent
+                // tells the clock that you pressed the "alarm on" button
+                my_intent.putExtra("extra", "alarm on");
+
                 // create a pending intent that delays the intent
                 // until the specified calendar time
                 pending_intent = PendingIntent.getBroadcast(MainActivity.this, 0,
@@ -105,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
 
                 // cancel the alarm
                 alarm_manager.cancel(pending_intent);
+
+                // put extra string into my_intent
+                // tells the clock that you pressed the "alarm off" button
+                my_intent.putExtra("extra", "alarm off");
 
                 // stop the ringtone
                 sendBroadcast(my_intent);
