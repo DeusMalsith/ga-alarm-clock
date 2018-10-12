@@ -1,15 +1,11 @@
 package com.example.justinrashall.gaalarmclock;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.util.Log;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
+import android.util.Log;
 
 public class RingtonePlayingService extends Service {
 
@@ -31,26 +27,6 @@ public class RingtonePlayingService extends Service {
         String state = intent.getExtras().getString("extra");
 
         Log.e("Ringtone state: extra is ", state);
-
-        // notification
-        // set up the notification service
-        NotificationManager notify_manager = (NotificationManager)
-                getSystemService(NOTIFICATION_SERVICE);
-
-        // set up an intent that goes to the Main Activity
-        Intent intent_main_activity = new Intent(this.getApplicationContext(), MainActivity.class);
-
-        // set up a pending intent for "setContentIntent"
-        PendingIntent pending_intent_main_activity = PendingIntent.getActivity(this, 0, intent_main_activity, 0);
-
-        // make the notification parameters
-        Notification notification_popup = new Notification.Builder(this)
-                .setContentTitle("An alarm is going off!")
-                .setContentText("Click me!")
-                .setContentIntent(pending_intent_main_activity)
-                .setAutoCancel(true)
-                .build();
-
 
         // this converts the extra strings from the intent
         // to start IDs, values 0 or 1
@@ -116,12 +92,6 @@ public class RingtonePlayingService extends Service {
         else {
             Log.e("else", "odd event produced");
         }
-
-
-//        media_song = MediaPlayer.create(this, R.raw.forest);
-//        media_song.start();
-
-
 
         return START_NOT_STICKY;
     }
